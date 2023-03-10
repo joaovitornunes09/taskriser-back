@@ -1,0 +1,48 @@
+version: "3.7"
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  # image project
+  teste-fb:
+    container_name: teste-fb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - app-network
+
+  # nginx
+  nginx:
+    image: nginx:alpine
+    container_name: teste-fb-serve
+    restart: unless-stopped
+    ports:
+      - "8989:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+
+  banco-teste-fb:
+    container_name: banco-teste-fb
+    image: postgres:15.1
+    networks:
+      - app-network
+    environment:
+      PGUSER: laravel
+      POSTGRES_DB: teste-fb
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: 112233
+      PGDATA: /data/teste-fb
+    volumes:
+      - ./banco-teste-fb:/data/teste-fb
+    ports:
+      - "2002:5432"
