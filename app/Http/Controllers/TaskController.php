@@ -23,8 +23,13 @@ class TaskController extends Controller
     public function registerTask(StoreTaskRequest $request){
         try {
             $user = $request->user();
-            $data = $request->toArray();
 
+            if(!$request->has("status_id") && !$request->get("status_id")){
+                $request->merge(["status_id" => 1] );
+            }
+
+            $data               = $request->toArray();
+            
             $data['created_by'] = $user->user_id;
 
             if(!$this->model->create($data)){

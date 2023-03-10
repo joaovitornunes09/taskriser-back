@@ -23,9 +23,9 @@ class StoreTaskRequest extends FormRequest
     {
         return [
             'description'    => 'string|required',
-            'title'          => 'string|required',
+            'title'          => 'string|required|unique:tasks,title',
             'visible_to_all' => 'bool|required',
-            'status_id'      => 'int|required',
+            'status_id'      => 'int',
             'complete_until' => 'date|required',
             'assigned_to'    => 'int',
             'completed_by'   => 'int'

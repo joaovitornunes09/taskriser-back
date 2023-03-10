@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string("description");
-            $table->string("title");
+            $table->string("title")->unique();
             $table->boolean("visible_to_all");
             $table->integer("status_id");
             $table->date("complete_until");

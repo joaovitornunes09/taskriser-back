@@ -23,7 +23,7 @@ class UpdateTaskRequest extends FormRequest
     {
         return [
             'description'    => 'string',
-            'title'          => 'string',
+            'title'          => 'string|unique:tasks,title',
             'visible_to_all' => 'bool',
             'status_id'      => 'int',
             'complete_until' => 'date',
