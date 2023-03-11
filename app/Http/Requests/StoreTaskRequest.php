@@ -27,7 +27,7 @@ class StoreTaskRequest extends FormRequest
             'visible_to_all' => 'bool|required',
             'status_id'      => 'int',
             'complete_until' => 'date|required',
-            'assigned_to'    => 'int',
+            'assigned_to'    => 'string',
             'completed_by'   => 'int'
         ];
     }

@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string("description");
             $table->string("title")->unique();
             $table->boolean("visible_to_all");
-            $table->integer("status_id");
+            $table->string("status");
             $table->date("complete_until");
-            $table->integer("assigned_to")->nullable();
+            $table->string("assigned_to")->nullable();
             $table->timestamps();
         });
     }

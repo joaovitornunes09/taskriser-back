@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class UserType extends Model
 {
     use HasFactory;
 
-    protected $table    = "status_task";
+    protected $table    = "user_types";
 
-    protected $fillable = ["status"];
+    protected $fillable = ["type"];
 
-    protected $primaryKey = "id";
+    protected $primaryKey = "type_id";
 }

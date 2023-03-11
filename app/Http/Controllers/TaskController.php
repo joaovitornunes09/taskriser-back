@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use App\Models\Status;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,13 @@ class TaskController extends Controller
      /**@var Task */
      protected $model;
 
-     public function __construct(Task $task)
+    /**@var Task */
+    protected $status;
+
+     public function __construct(Task $task, Status $status)
      {
          $this->model = $task;
+         $this->status = $status;
      }
 
 
@@ -24,12 +29,18 @@ class TaskController extends Controller
         try {
             $user = $request->user();
 
-            if(!$request->has("status_id") && !$request->get("status_id")){
-                $request->merge(["status_id" => 1] );
+            if(!$request->has("status") && !$request->get("status")){
+                $request->merge(["status" => 1] );
             }
 
-            $data               = $request->toArray();
-            
+            $status =   $this->status->find($request->get("status"))->status;
+
+            $request->request->remove("status");
+
+            $data   = $request->toArray();
+
+            $data['status'] = $status;
+
             $data['created_by'] = $user->user_id;
 
             if(!$this->model->create($data)){
@@ -46,7 +57,7 @@ class TaskController extends Controller
                 "status" => false,
                 'message' => "Failed when trying to perform request",
                 "data"    => $e->getMessage()
-            ], $e->getCode() ?: 500);
+            ],$e->getCode() ?: 500);
         }
     }
 
@@ -110,9 +121,16 @@ class TaskController extends Controller
 
     public function updateTask(UpdateTaskRequest $request, $id){
         try {
-            $user = $request->user();
+            if($request->has("status")){
+                $status         =   $this->status->find($request->get("status"))->status;
+                $request->request->remove("status");
+            }
 
             $data = $request->toArray();
+
+            if($status){
+                $data["status"] = $status;
+            }
 
             $task = $this->model->find($id);
 

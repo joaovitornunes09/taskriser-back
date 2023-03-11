@@ -16,7 +16,7 @@ class Task extends Model
         "description",
         "title",
         "visible_to_all",
-        "status_id",
+        "status",
         "complete_until",
         "assigned_to",
         "created_at",

@@ -25,9 +25,10 @@ class UpdateTaskRequest extends FormRequest
             'description'    => 'string',
             'title'          => 'string|unique:tasks,title',
             'visible_to_all' => 'bool',
-            'status_id'      => 'int',
+            'status'         => 'int',
             'complete_until' => 'date',
-            'assigned_to'    => 'int',
+            'assigned_to'    => 'string',
+            'user_type'      => 'int',
             'completed_by'   => 'int'
         ];
     }
