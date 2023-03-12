@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("title")->unique();
             $table->boolean("visible_to_all");
             $table->string("status");
-            $table->date("complete_until");
+            $table->string("complete_until")->nullable();
             $table->string("assigned_to")->nullable();
             $table->timestamps();
         });

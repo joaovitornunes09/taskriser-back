@@ -33,15 +33,21 @@ class TaskController extends Controller
                 $request->merge(["status" => 1] );
             }
 
+            if($request->has("complete_until")){
+                $completeUntil = date( 'd/m/Y' , strtotime($request->get("complete_until")));
+                $request->request->remove("complete_until");
+            }
+
             $status =   $this->status->find($request->get("status"))->status;
 
             $request->request->remove("status");
 
+
             $data   = $request->toArray();
 
-            $data['status'] = $status;
-
-            $data['created_by'] = $user->user_id;
+            $data['status']         = $status;
+            $data['created_by']     = $user->user_id;
+            $data['complete_until'] = $completeUntil;
 
             if(!$this->model->create($data)){
                 throw new \Exception("Error when trying to create a new task.");
@@ -126,10 +132,19 @@ class TaskController extends Controller
                 $request->request->remove("status");
             }
 
+            if($request->has("complete_until")){
+                $completeUntil = date( 'd/m/Y' , strtotime($request->get("complete_until")));
+                $request->request->remove("complete_until");
+            }
+
             $data = $request->toArray();
 
             if($status){
                 $data["status"] = $status;
+            }
+
+            if($completeUntil) {
+                $data['complete_until'] = $completeUntil;
             }
 
             $task = $this->model->find($id);
