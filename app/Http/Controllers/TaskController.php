@@ -33,7 +33,7 @@ class TaskController extends Controller
                 $request->merge(["status" => 1] );
             }
 
-            if($request->has("complete_until")){
+            if($request->has("complete_until") && $request->get("complete_until")){
                 $completeUntil = date( 'd/m/Y' , strtotime($request->get("complete_until")));
                 $request->request->remove("complete_until");
             }
@@ -45,9 +45,16 @@ class TaskController extends Controller
 
             $data   = $request->toArray();
 
-            $data['status']         = $status;
+            if(isset($status)){
+                $data['status']         = $status;
+            }
+
+            if(isset($completeUntil)){
+                $data['complete_until'] = $completeUntil;
+            }
+
             $data['created_by']     = $user->user_id;
-            $data['complete_until'] = $completeUntil;
+
 
             if(!$this->model->create($data)){
                 throw new \Exception("Error when trying to create a new task.");
@@ -117,6 +124,7 @@ class TaskController extends Controller
             ->where('assigned_to', $user->name)
             ->orWhere('visible_to_all', true)
             ->orWhere('created_by', $user->user_id)
+            ->selectRaw("COALESCE(tasks.complete_until, 'Not defined') as complete_until")
             ->get();
 
             return response()->json([
@@ -147,7 +155,7 @@ class TaskController extends Controller
                 $request->request->remove("status");
             }
 
-            if($request->has("complete_until")){
+            if($request->has("complete_until") && $request->get("complete_until")){
 
                 $completeUntil = date( 'd/m/Y' , strtotime($request->get("complete_until")));
                 $request->request->remove("complete_until");

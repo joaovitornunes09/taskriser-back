@@ -26,10 +26,8 @@ class UpdateTaskRequest extends FormRequest
             'title'          => 'string',
             'visible_to_all' => 'bool',
             'status'         => 'int',
-            'complete_until' => 'string',
             'completed_in'   => 'string',
             'completed_by'   => 'int',
-            'assigned_to'    => 'string',
             'user_type'      => 'int',
             'completed_by'   => 'int'
         ];
