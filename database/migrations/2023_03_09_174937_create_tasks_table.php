@@ -18,6 +18,8 @@ return new class extends Migration
             $table->boolean("visible_to_all");
             $table->string("status");
             $table->string("complete_until")->nullable();
+            $table->integer("completed_by")->nullable();
+            $table->string("completed_in")->nullable();
             $table->string("assigned_to")->nullable();
             $table->timestamps();
         });

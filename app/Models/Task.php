@@ -18,6 +18,8 @@ class Task extends Model
         "visible_to_all",
         "status",
         "complete_until",
+        "completed_by",
+        "completed_in",
         "assigned_to",
         "created_at",
         "updated_at",
