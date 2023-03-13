@@ -118,7 +118,7 @@ class TaskController extends Controller
             ->orWhere('visible_to_all', true)
             ->orWhere('created_by', $user->user_id)
             ->get();
-            
+
             return response()->json([
                 "status" => true,
                 'message' => "Request successfully completed!",
@@ -140,7 +140,7 @@ class TaskController extends Controller
             if($request->has("status")){
                 if($request->get("status") === 3){
                     $completedBy = $request->user()->user_id;
-                    $completedIn = date("d/m/y");
+                    $completedIn = date("d/m/Y");
                 }
 
                 $status         =   $this->status->find($request->get("status"))->status;
