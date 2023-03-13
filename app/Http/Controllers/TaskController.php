@@ -114,7 +114,7 @@ class TaskController extends Controller
                      'tasks.completed_in', 'users_created_by.name as created_by', 'users_completed_by.name as completed_by')
             ->join('users as users_created_by', 'tasks.created_by', '=', 'users_created_by.user_id')
             ->leftJoin('users as users_completed_by', 'tasks.completed_by', '=', 'users_completed_by.user_id')
-            ->where('assigned_to', $user->user_id)
+            ->where('assigned_to', $user->name)
             ->orWhere('visible_to_all', true)
             ->orWhere('created_by', $user->user_id)
             ->get();
