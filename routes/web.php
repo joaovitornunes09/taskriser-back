@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::fallback(function(){
+    return response()->json([
+        'status'   => true,
+        'message' => env('APP_NAME'),
+        'data'     => []
+    ], 200);
+});

@@ -42,12 +42,4 @@ COPY docker/php/custom.ini /usr/local/etc/php/conf.d/custom.ini
 
 USER $user
 
-RUN composer install
 
-RUN php artisan key:generate
-
-RUN php artisan jwt:secret
-
-RUN php artisan migrate
-
-RUN php artisan db:seed

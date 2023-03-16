@@ -5,6 +5,21 @@
 - Docker 3.7
 - Postgre
 
+## Informações
+
+#### Funcionalidade
+Este backend foi moldado para conseguir realizar todas tarefas propostas pelo teste fabrica info, que consistia em criar um sistema de admnistração de tarefas onde essas tarefas poderiam ser listadas, criadas, atualizadas e deletas.
+O sistema consiste em um modelo onde haverá dois tipos de usuários:
+
+###### Administrador: 
+Esse usuário será criado assim que você rodar as seeds do projeto nos passos de instalação, ele será capaz de realizar todas as operações dentro do sistema que conta com todo o tipo de manipulação referente as tarefas.
+
+- login: admin
+- senha: admin
+
+###### Comum: 
+O usuário comum, é aquele que poderá ser criado pelo proprio sistema de cadastro da aplicação, será aquele que só tera disponivel as ações de listagem de tarefas que foram atribuidas a ele ou que foram disponibilizadas para visualização para todos os usuários do sistema pelo administrador, além disso ele poderá Finalizar as tarefas que lhe foram atribuidas.
+
 ## Instalação
 
 ##### Requisito obrigátorios
@@ -32,32 +47,41 @@ Com o Docker-compose instalado, execute esse comando na raiz do projeto:
 ```sh
 docker-compose up -d --build
 ```
-#### Comando dentro do container teste-fb
 
-1. Execute a seguinte linha de comando no terminal:
+#### Comandos dentro do container teste-fb
+1.Entre no container
+
+sudo docker exec -it teste-fb bash 
+
+2. Execute a seguinte linha de comando no terminal:
 ```
 composer install
 ```
 
-2. Em sequência execute:
+3. Em sequência execute:
 ```
 php artisan key:generate
 ```
 
-3. Gerar chave JWT referente a Autenticação:
+4. Gerar chave JWT referente a Autenticação:
 ```
 php artisan jwt:secret
 ```
 
-4. Rodar as migrations do projeto:
+5. Rodar as migrations do projeto:
 ```
 php artisan migrate
 ```
 
-5. Rodar as seeds do projeto:
+6. Rodar as seeds do projeto:
 ```
 php artisan db:seed
 ```
+
+Pronto agora a api está instalada.
+
+Url: http://localhost:8989/api
+
 #### Credenciais do banco
 
 1. Host: 
