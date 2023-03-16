@@ -1,20 +1,36 @@
-#### API Teste Fabrica Info - Admnistrador de Tarefas -------> João Vitor Raulino Nunes
+#### API Teste Fabrica Info - Admnistrador de Tarefas
 
 ##### Sobre tecnologias utilizadas nesse projeto:
 - Laravel 10
 - Docker 3.7
 - Postgre
 
+## Instalação
+
+##### Requisito obrigátorios
+Antes de tudo você precisa ter o docker e o docker-compose e também o git.
+Caso não tenha instalado, aqui alguns links de referência:
+- Aqui encontrar os passos para instalação do Docker => https://docs.docker.com/get-docker/ 
+- Aqui encontrar os passos para instalação do Docker Compose => https://docs.docker.com/compose/ 
+- Aqui encontrar os passos para instalação do git => https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+##### Clone o projeto
+Com o git instalado e em um diretório da sua escolha, baixe o projeto:
+
+```sh
+git clone https://github.com/joaovitornunes09/teste-fbinfo-back.git
+```
+
 ##### Configuração de Arquivos:
 
 1. Copiar o arquivo *.env.example* e colar com nome de *.env*
 
-##### Instalação de pacotes e Docker:
+##### Suba o serviço
+Com o Docker-compose instalado, execute esse comando na raiz do projeto:
 
-1.Agora vamos iniciar instalação do Docker:
-```
-sudo docker-compose up -d
-sudo docker exec -it teste-fb bash
+
+```sh
+docker-compose up -d --build
 ```
 #### Comando dentro do container teste-fb
 
