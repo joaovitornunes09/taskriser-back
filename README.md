@@ -49,9 +49,11 @@ docker-compose up -d --build
 ```
 
 #### Comandos dentro do container teste-fb
-1.Entre no container
 
+1.Entre no container
+```
 sudo docker exec -it teste-fb bash 
+```
 
 2. Execute a seguinte linha de comando no terminal:
 ```
