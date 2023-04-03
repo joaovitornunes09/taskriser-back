@@ -33,7 +33,7 @@ Caso não tenha instalado, aqui alguns links de referência:
 Com o git instalado e em um diretório da sua escolha, baixe o projeto:
 
 ```sh
-git clone https://github.com/joaovitornunes09/teste-fbinfo-back.git
+git clone https://github.com/joaovitornunes09/taskriser-back.git
 ```
 
 ##### Configuração de Arquivos:
@@ -48,11 +48,11 @@ Com o Docker-compose instalado, execute esse comando na raiz do projeto:
 docker-compose up -d --build
 ```
 
-#### Comandos dentro do container teste-fb
+#### Comandos dentro do container taskrise
 
 1.Entre no container
 ```
-sudo docker exec -it teste-fb bash 
+sudo docker exec -it taskrise bash 
 ```
 
 2. Execute a seguinte linha de comando no terminal:
@@ -92,7 +92,7 @@ localhost
 ```
 2. Database: 
 ```
-teste-fb
+taskrise
 ```
 3. Username:
 ```

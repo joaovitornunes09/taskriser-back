@@ -6,8 +6,8 @@ networks:
 
 services:
   # image project
-  teste-fb:
-    container_name: teste-fb
+  taskrise:
+    container_name: taskrise
     build:
       context: .
       dockerfile: Dockerfile
@@ -21,7 +21,7 @@ services:
   # nginx
   nginx:
     image: nginx:alpine
-    container_name: teste-fb-serve
+    container_name: taskrise-serve
     restart: unless-stopped
     ports:
       - "8989:80"
@@ -31,18 +31,18 @@ services:
     networks:
       - app-network
 
-  banco-teste-fb:
-    container_name: banco-teste-fb
+  banco-taskrise:
+    container_name: banco-taskrise
     image: postgres:15.1
     networks:
       - app-network
     environment:
       PGUSER: laravel
-      POSTGRES_DB: teste-fb
+      POSTGRES_DB: taskrise
       POSTGRES_USER: laravel
       POSTGRES_PASSWORD: 112233
-      PGDATA: /data/teste-fb
+      PGDATA: /data/taskrise
     volumes:
-      - ./banco-teste-fb:/data/teste-fb
+      - ./banco-taskrise:/data/taskrise
     ports:
       - "2002:5432"
