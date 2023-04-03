@@ -3,7 +3,7 @@
 ##### Sobre tecnologias utilizadas nesse projeto:
 - Laravel 10
 - Docker 3.7
-- Postgre
+- Postgres
 
 ## Informações
 
