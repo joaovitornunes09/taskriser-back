@@ -1,4 +1,4 @@
-#### API Teste Fabrica Info - Admnistrador de Tarefas
+#### API - Admnistrador de Tarefas
 
 ##### Sobre tecnologias utilizadas nesse projeto:
 - Laravel 10
@@ -8,7 +8,7 @@
 ## Informações
 
 #### Funcionalidade
-Este backend foi moldado para conseguir realizar todas tarefas propostas pelo teste fabrica info, que consistia em criar um sistema de admnistração de tarefas onde essas tarefas poderiam ser listadas, criadas, atualizadas e deletas.
+Este backend foi moldado para um sistema de admnistração de tarefas onde essas tarefas poderiam ser listadas, criadas, atualizadas e deletas.
 O sistema consiste em um modelo onde haverá dois tipos de usuários:
 
 ###### Administrador: 
