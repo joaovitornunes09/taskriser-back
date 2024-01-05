@@ -1,4 +1,4 @@
-#### API - Admnistrador de Tarefas
+#### TaskRiser - Admnistrador de Tarefas - Backend
 
 ##### Sobre tecnologias utilizadas nesse projeto:
 - Laravel 10
