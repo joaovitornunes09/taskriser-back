@@ -1,4 +1,4 @@
-#### TaskRiser - Admnistrador de Tarefas - Backend
+#### Back TaskRiser - Admnistrador de Tarefas
 
 ##### Sobre tecnologias utilizadas nesse projeto:
 - Laravel 10
